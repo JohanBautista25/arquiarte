@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ScrollToHash } from './components/ScrollToHash'
 import Home from './pages/Home.jsx'
 import Construccion from './pages/services/Construccion.jsx'

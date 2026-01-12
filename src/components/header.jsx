@@ -9,6 +9,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
   const isHomePage = location.pathname === '/'
+  const activeHash = isHomePage ? location.hash : ''
 
   const getNavHref = (item) => {
     if (item.hashId) {
@@ -18,6 +19,12 @@ export function Header() {
   }
 
   const shouldUseAnchor = (item) => item.hashId
+  const isItemActive = (item) => {
+    if (item.hashId) {
+      return isHomePage && activeHash === `#${item.hashId}`
+    }
+    return location.pathname === item.path
+  }
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-background">
@@ -35,7 +42,10 @@ export function Header() {
                   <a
                     key={item.label}
                     href={getNavHref(item)}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
+                    className={`text-foreground hover:text-primary transition-colors font-medium ${
+                      isItemActive(item) ? "text-primary" : ""
+                    }`}
+                    aria-current={isItemActive(item) ? "page" : undefined}
                   >
                     {item.label}
                   </a>
@@ -43,7 +53,10 @@ export function Header() {
                   <Link
                     key={item.label}
                     to={item.path}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
+                    className={`text-foreground hover:text-primary transition-colors font-medium ${
+                      isItemActive(item) ? "text-primary" : ""
+                    }`}
+                    aria-current={isItemActive(item) ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
@@ -69,7 +82,10 @@ export function Header() {
                   <a
                     key={item.label}
                     href={getNavHref(item)}
-                    className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
+                    className={`block py-2 text-foreground hover:text-primary transition-colors font-medium ${
+                      isItemActive(item) ? "text-primary" : ""
+                    }`}
+                    aria-current={isItemActive(item) ? "page" : undefined}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -78,7 +94,10 @@ export function Header() {
                   <Link
                     key={item.label}
                     to={item.path}
-                    className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
+                    className={`block py-2 text-foreground hover:text-primary transition-colors font-medium ${
+                      isItemActive(item) ? "text-primary" : ""
+                    }`}
+                    aria-current={isItemActive(item) ? "page" : undefined}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
