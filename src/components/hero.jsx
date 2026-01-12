@@ -1,7 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Sparkles, Building2, PenTool } from "lucide-react"
+import { Sparkles, Building2, PenTool, ArrowDown } from "lucide-react"
+import { HERO_STATS, BRAND } from "@/constants"
 
 export function Hero() {
   return (
@@ -40,7 +41,7 @@ export function Hero() {
 
         {/* Título principal con efecto */}
         <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
-          <span className="inline-block animate-fade-in">ARQUI ARTE</span>
+          <span className="inline-block animate-fade-in">{BRAND.name}</span>
         </h1>
 
         {/* Subtítulos con iconos */}
@@ -57,7 +58,7 @@ export function Hero() {
           
           <div className="relative inline-block">
             <p className="text-base md:text-lg text-white/80 italic px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-              ✨ Diseñamos espacios que elevan tu vida
+              ✨ {BRAND.tagline}
             </p>
           </div>
         </div>
@@ -85,12 +86,7 @@ export function Hero() {
 
         {/* Estadísticas rápidas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-16">
-          {[
-            { value: "15+", label: "Años de experiencia" },
-            { value: "200+", label: "Proyectos completados" },
-            { value: "98%", label: "Clientes satisfechos" },
-            { value: "24/7", label: "Atención disponible" }
-          ].map((stat, index) => (
+          {HERO_STATS.map((stat, index) => (
             <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all duration-300">
               <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
               <div className="text-xs md:text-sm text-white/80">{stat.label}</div>

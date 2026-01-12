@@ -1,56 +1,54 @@
 "use client"
 
 import { useState } from "react"
-import { MapPin, Mail, Phone, Menu, X, Facebook, Instagram, Youtube } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
+import { NAV_ITEMS, BRAND } from "@/constants"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
   const isHomePage = location.pathname === '/'
 
-  const navItems = [
-    { label: "Inicio", href: isHomePage ? "#inicio" : "/", isLink: !isHomePage },
-    { label: "Nuestros Servicios", href: isHomePage ? "#servicios" : "/#servicios", isLink: !isHomePage },
-    { label: "Quiénes Somos", href: isHomePage ? "#nosotros" : "/#nosotros", isLink: !isHomePage },
-    { label: "Portfolio", href: "/portfolio", isLink: true },
-    { label: "Contacto", href: isHomePage ? "#contacto" : "/#contacto", isLink: !isHomePage },
-  ]
+  const getNavHref = (item) => {
+    if (item.hashId) {
+      return isHomePage ? `#${item.hashId}` : `${item.path}#${item.hashId}`
+    }
+    return item.path
+  }
+
+  const shouldUseAnchor = (item) => item.hashId
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-background">
-
-      {/* Main navigation */}
       <div className="bg-background border-b">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link to="/" className="font-serif text-2xl font-bold text-foreground hover:text-primary transition-colors">
-                ARQUI ARTE
-              </Link>
-            </div>
+            <Link to="/" className="font-serif text-2xl font-bold text-foreground hover:text-primary transition-colors">
+              {BRAND.name}
+            </Link>
 
             {/* Desktop navigation */}
             <nav className="hidden md:flex items-center gap-6">
-              {navItems.map((item) => (
-                item.isLink ? (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
+              {NAV_ITEMS.map((item) =>
+                shouldUseAnchor(item) ? (
                   <a
-                    key={item.href}
-                    href={item.href}
+                    key={item.label}
+                    href={getNavHref(item)}
                     className="text-foreground hover:text-primary transition-colors font-medium"
                   >
                     {item.label}
                   </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.path}
+                    className="text-foreground hover:text-primary transition-colors font-medium"
+                  >
+                    {item.label}
+                  </Link>
                 )
-              ))}
+              )}
             </nav>
 
             {/* Mobile menu button */}
@@ -66,27 +64,27 @@ export function Header() {
           {/* Mobile navigation */}
           {mobileMenuOpen && (
             <nav className="md:hidden py-4 border-t">
-              {navItems.map((item) => (
-                item.isLink ? (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
+              {NAV_ITEMS.map((item) =>
+                shouldUseAnchor(item) ? (
                   <a
-                    key={item.href}
-                    href={item.href}
+                    key={item.label}
+                    href={getNavHref(item)}
                     className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
                   </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.path}
+                    className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
                 )
-              ))}
+              )}
             </nav>
           )}
         </div>

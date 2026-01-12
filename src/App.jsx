@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ScrollToHash } from './components/ScrollToHash'
 import Home from './pages/Home.jsx'
 import Construccion from './pages/services/Construccion.jsx'
@@ -23,7 +23,7 @@ function App() {
         <Route path="/servicios/avaluos" element={<Avaluos />} />
         <Route path="/servicios/permisos" element={<Permisos />} />
         <Route path="/servicios/asesoria" element={<Asesoria />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portafolio" element={<Portfolio />} />
         <Route path="/proyecto/:id" element={<ProjectDetail />} />
       </Routes>
     </Router>

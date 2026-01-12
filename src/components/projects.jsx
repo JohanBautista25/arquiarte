@@ -4,23 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, FileText } from "lucide-react"
 import { Link } from "react-router-dom"
-
-const locations = [
-  {
-    city: "Ibagué",
-    region: "y Tolima",
-    projects: 15,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-09-30%20162101-1RYGDkLq9fNnXDDxl7PjSyOMVrBt6J.png",
-  },
-  {
-    city: "Bogotá",
-    region: "y Sabana",
-    projects: 8,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-09-30%20162101-1RYGDkLq9fNnXDDxl7PjSyOMVrBt6J.png",
-  },
-]
+import { LOCATIONS } from "@/constants"
 
 export function Projects() {
   return (
@@ -34,7 +18,7 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {locations.map((location, index) => (
+          {LOCATIONS.map((location, index) => (
             <Card key={index} className="overflow-hidden border-2 hover:border-primary transition-all duration-300">
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -74,7 +58,7 @@ export function Projects() {
                     <p className="text-xs text-muted-foreground">PQRF</p>
                   </div>
                 </div>
-                <Link to="/portfolio">
+                <Link to="/portafolio">
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">Ver Proyectos</Button>
                 </Link>
               </CardContent>

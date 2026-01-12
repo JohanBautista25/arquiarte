@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
+import { BRAND, CONTACT_INFO } from "@/constants"
 
 export function Footer() {
   return (
@@ -7,9 +8,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="font-serif text-3xl font-bold mb-4">ARQUI ARTE</h3>
+            <h3 className="font-serif text-3xl font-bold mb-4">{BRAND.name}</h3>
             <p className="text-background/80 text-sm leading-relaxed">
-              Empresa de construcción y diseño en Ibagué, Tolima. Diseñamos espacios que elevan tu vida.
+              {BRAND.description}
             </p>
           </div>
 
@@ -53,7 +54,7 @@ export function Footer() {
             <h4 className="font-semibold text-lg mb-4">Síguenos</h4>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com/arquiarte.col"
+                href={CONTACT_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
@@ -61,7 +62,7 @@ export function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://facebook.com"
+                href={CONTACT_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
@@ -69,7 +70,7 @@ export function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="mailto:johanbautista1022@gmail.com"
+                href={`mailto:${CONTACT_INFO.email}`}
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
               >
                 <Mail className="w-5 h-5" />
