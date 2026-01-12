@@ -1,3 +1,4 @@
+import { Header } from "@/components/header"
 import { ServiceDetail } from "@/components/ServiceDetail"
 import { SERVICE_DETAILS } from "@/constants"
 
@@ -26,16 +27,18 @@ const service = SERVICE_DETAILS.asesoria
 
 export default function Asesoria() {
   return (
-    <ServiceDetail
-      title={service.title}
-      subtitle={service.subtitle}
-      breadcrumb={service.breadcrumb}
-      featuresTitle={service.featuresTitle}
-      featuresDescription={service.featuresDescription}
-      features={service.features}
-      featureImage={service.featureImage}
-      stats={service.stats}
-      projects={projects}
-    />
+    <>
+      <ServiceDetail
+        title={service.title}
+        subtitle={service.subtitle}
+        breadcrumb={service.breadcrumb}
+        featuresTitle={service.featuresTitle}
+        featuresDescription={service.featuresDescription}
+        features={service.features}
+        featureImage={service.featureImage}
+        stats={service.stats}
+        projects={projects}
+      />
+    </>
   )
 }

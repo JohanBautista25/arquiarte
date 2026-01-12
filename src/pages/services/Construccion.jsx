@@ -1,3 +1,4 @@
+import { Header } from "@/components/header"
 import { ServiceDetail } from "@/components/ServiceDetail"
 import { SERVICE_DETAILS } from "@/constants"
 import { Users, Building2, Shield, Wrench, Award } from "lucide-react"
@@ -55,17 +56,19 @@ const service = SERVICE_DETAILS.construccion
 
 export default function Construccion() {
   return (
-    <ServiceDetail
-      title={service.title}
-      subtitle={service.subtitle}
-      breadcrumb={service.breadcrumb}
-      featuresTitle={service.featuresTitle}
-      featuresDescription={service.featuresDescription}
-      features={service.features}
-      featureImage={service.featureImage}
-      stats={service.stats}
-      processSteps={processSteps}
-      projects={projects}
-    />
+    <>
+      <ServiceDetail
+        title={service.title}
+        subtitle={service.subtitle}
+        breadcrumb={service.breadcrumb}
+        featuresTitle={service.featuresTitle}
+        featuresDescription={service.featuresDescription}
+        features={service.features}
+        featureImage={service.featureImage}
+        stats={service.stats}
+        processSteps={processSteps}
+        projects={projects}
+      />
+    </>
   )
 }

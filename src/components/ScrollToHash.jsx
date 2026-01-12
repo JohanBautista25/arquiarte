@@ -5,8 +5,9 @@ export function ScrollToHash() {
   const location = useLocation()
 
   useEffect(() => {
+    const stateHash = location.state && location.state.scroll ? location.state.scroll : null
     const storedHash = sessionStorage.getItem('scrollTarget')
-    const target = storedHash || location.hash
+    const target = stateHash || storedHash || location.hash
     const hashId = target ? target.replace('#', '') : ''
 
     if (hashId) {
@@ -16,10 +17,9 @@ export function ScrollToHash() {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }, 100)
       }
+      // clean up old sessionStorage and remove hash and state from history
       sessionStorage.removeItem('scrollTarget')
-      if (location.hash) {
-        history.replaceState(null, '', location.pathname + location.search)
-      }
+      history.replaceState(null, '', location.pathname + location.search)
       return
     }
 

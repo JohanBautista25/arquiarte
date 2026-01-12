@@ -2,34 +2,23 @@
 
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { NAV_ITEMS, BRAND } from "@/constants"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const navigate = useNavigate()
   const isHomePage = location.pathname === '/'
 
-  const getNavHref = (item) => {
-    if (item.hashId) {
-      return isHomePage ? `#${item.hashId}` : `${item.path}#${item.hashId}`
-    }
-    return item.path
-  }
+  const getNavHref = (item) => (item.hashId ? `#${item.hashId}` : item.path)
 
   const shouldUseAnchor = (item) => item.hashId
-  const handleHashNav = (event, item) => {
+  const handleHashNavLocal = (event, item) => {
     event.preventDefault()
-    if (isHomePage) {
-      const element = document.getElementById(item.hashId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-      return
+    const element = document.getElementById(item.hashId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-    sessionStorage.setItem('scrollTarget', `#${item.hashId}`)
-    navigate('/')
   }
   const isItemActive = (item) => {
     if (item.hashId) {
@@ -51,17 +40,31 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-6">
               {NAV_ITEMS.map((item) =>
                 shouldUseAnchor(item) ? (
-                  <a
-                    key={item.label}
-                    href={getNavHref(item)}
-                    className={`text-foreground hover:text-primary transition-colors font-medium ${
-                      isItemActive(item) ? "text-primary" : ""
-                    }`}
-                    aria-current={isItemActive(item) ? "page" : undefined}
-                    onClick={(event) => handleHashNav(event, item)}
-                  >
-                    {item.label}
-                  </a>
+                  isHomePage ? (
+                    <a
+                      key={item.label}
+                      href={getNavHref(item)}
+                      className={`text-foreground hover:text-primary transition-colors font-medium ${
+                        isItemActive(item) ? "text-primary" : ""
+                      }`}
+                      aria-current={isItemActive(item) ? "page" : undefined}
+                      onClick={(event) => handleHashNavLocal(event, item)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      to={'/'}
+                      state={{ scroll: `#${item.hashId}` }}
+                      className={`text-foreground hover:text-primary transition-colors font-medium ${
+                        isItemActive(item) ? "text-primary" : ""
+                      }`}
+                      aria-current={isItemActive(item) ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  )
                 ) : (
                   <Link
                     key={item.label}
@@ -92,20 +95,35 @@ export function Header() {
             <nav className="md:hidden py-4 border-t">
               {NAV_ITEMS.map((item) =>
                 shouldUseAnchor(item) ? (
-                  <a
-                    key={item.label}
-                    href={getNavHref(item)}
-                    className={`block py-2 text-foreground hover:text-primary transition-colors font-medium ${
-                      isItemActive(item) ? "text-primary" : ""
-                    }`}
-                    aria-current={isItemActive(item) ? "page" : undefined}
-                    onClick={(event) => {
-                      handleHashNav(event, item)
-                      setMobileMenuOpen(false)
-                    }}
-                  >
-                    {item.label}
-                  </a>
+                  isHomePage ? (
+                    <a
+                      key={item.label}
+                      href={getNavHref(item)}
+                      className={`block py-2 text-foreground hover:text-primary transition-colors font-medium ${
+                        isItemActive(item) ? "text-primary" : ""
+                      }`}
+                      aria-current={isItemActive(item) ? "page" : undefined}
+                      onClick={(event) => {
+                        handleHashNavLocal(event, item)
+                        setMobileMenuOpen(false)
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      to={'/'}
+                      state={{ scroll: `#${item.hashId}` }}
+                      className={`block py-2 text-foreground hover:text-primary transition-colors font-medium ${
+                        isItemActive(item) ? "text-primary" : ""
+                      }`}
+                      aria-current={isItemActive(item) ? "page" : undefined}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
                 ) : (
                   <Link
                     key={item.label}

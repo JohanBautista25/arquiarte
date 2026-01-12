@@ -465,8 +465,7 @@ export default function ProjectDetail() {
   const navigate = useNavigate()
   const handleContactNav = (event) => {
     event.preventDefault()
-    sessionStorage.setItem('scrollTarget', '#contacto')
-    navigate('/')
+    navigate('/', { state: { scroll: '#contacto' } })
   }
   const project = projectsData[id]
 
