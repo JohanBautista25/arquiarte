@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Updated theme with warm earth tones for construction company */
+  --background: 60 4% 97%;
+  --foreground: 40 2% 20%;
+  --card: 60 5% 99%;
+  --card-foreground: 40 2% 20%;
+  --popover: 60 5% 99%;
+  --popover-foreground: 40 2% 20%;
+  --primary: 140 8% 45%;
+  --primary-foreground: 60 5% 99%;
+  --secondary: 45 12% 62%;
+  --secondary-foreground: 60 5% 99%;
+  --muted: 60 1% 93%;
+  --muted-foreground: 40 2% 50%;
+  --accent: 45 12% 62%;
+  --accent-foreground: 60 5% 99%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 60 5% 99%;
+  --border: 60 1% 88%;
+  --input: 60 1% 88%;
+  --ring: 140 8% 45%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 15%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 15%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 15%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 0 0% 95%;
+  --primary-foreground: 0 0% 20%;
+  --secondary: 0 0% 27%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 27%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 27%;
+  --accent-foreground: 0 0% 95%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 95%;
+  --border: 0 0% 27%;
+  --input: 0 0% 27%;
+  --ring: 0 0% 44%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
