@@ -1,14 +1,6 @@
 import { CheckCircle2 } from "lucide-react"
 import { Link } from "react-router-dom"
-
-const features = [
-  "Más de 10 años de experiencia",
-  "Equipo profesional certificado", 
-  "Materiales de primera calidad",
-  "Cumplimiento de plazos garantizado",
-  "Presupuestos transparentes",
-  "Atención personalizada 24/7",
-]
+import { ABOUT_FEATURES, BRAND } from "@/constants"
 
 export function About() {
   return (
@@ -20,7 +12,7 @@ export function About() {
               Transformamos Espacios, Creamos Experiencias
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              En <span className="font-semibold text-foreground">Arqui Arte</span>, somos más que una empresa de construcción. 
+              En <span className="font-semibold text-foreground">{BRAND.name}</span>, somos más que una empresa de construcción. 
               Somos artesanos del espacio, donde cada proyecto refleja la visión única de nuestros clientes y se convierte 
               en una obra de arte arquitectónica.
             </p>
@@ -30,7 +22,7 @@ export function About() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {features.map((feature, index) => (
+              {ABOUT_FEATURES.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <span className="text-foreground font-medium">{feature}</span>
@@ -46,10 +38,10 @@ export function About() {
                 Solicitar Cotización
               </a>
               <Link 
-                to="/portfolio"
+                to="/portafolio"
                 className="px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-colors text-center"
               >
-                Ver Portfolio
+                Ver Portafolio
               </Link>
             </div>
           </div>

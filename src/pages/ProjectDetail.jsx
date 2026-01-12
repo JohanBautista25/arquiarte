@@ -473,8 +473,8 @@ export default function ProjectDetail() {
         <main className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Proyecto no encontrado</h1>
-            <Link to="/portfolio" className="text-primary hover:underline">
-              Volver al portfolio
+            <Link to="/portafolio" className="text-primary hover:underline">
+              Volver al portafolio
             </Link>
           </div>
         </main>
@@ -494,18 +494,18 @@ export default function ProjectDetail() {
             <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
               <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
               <span>/</span>
-              <Link to="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
+              <Link to="/portafolio" className="hover:text-primary transition-colors">Portafolio</Link>
               <span>/</span>
               <span className="text-foreground">Detalle del proyecto</span>
             </nav>
 
             {/* Back Button */}
             <Link 
-              to="/portfolio"
+              to="/portafolio"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
-              Volver al portfolio
+              Volver al portafolio
             </Link>
 
             {/* Project Header */}
