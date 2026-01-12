@@ -2,11 +2,18 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ArrowLeft, Phone, Mail } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { usePageTitle } from "@/hooks/usePageTitle"
 
 export function ServiceLayout({ children, title, subtitle, breadcrumb }) {
   usePageTitle(breadcrumb)
+  const navigate = useNavigate()
+
+  const handleContactNav = (event) => {
+    event.preventDefault()
+    sessionStorage.setItem('scrollTarget', '#contacto')
+    navigate('/')
+  }
 
   return (
     <>
@@ -64,8 +71,9 @@ export function ServiceLayout({ children, title, subtitle, breadcrumb }) {
                 Llamar ahora
               </a>
               <Link 
-                to="/#contacto"
+                to="/"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 rounded-lg font-medium hover:bg-white/10 transition-colors"
+                onClick={handleContactNav}
               >
                 <Mail className="w-4 h-4" />
                 Solicitar cotización

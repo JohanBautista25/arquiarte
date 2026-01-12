@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ScrollToHash } from './components/ScrollToHash'
 import Home from './pages/Home.jsx'
 import Construccion from './pages/services/Construccion.jsx'
@@ -17,14 +17,20 @@ function App() {
       <ScrollToHash />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/servicios/construccion" element={<Construccion />} />
-        <Route path="/servicios/remodelaciones" element={<Remodelaciones />} />
-        <Route path="/servicios/diseno-arquitectonico" element={<DisenoArquitectonico />} />
-        <Route path="/servicios/avaluos" element={<Avaluos />} />
-        <Route path="/servicios/permisos" element={<Permisos />} />
-        <Route path="/servicios/asesoria" element={<Asesoria />} />
+        <Route path="/construccion" element={<Construccion />} />
+        <Route path="/remodelaciones" element={<Remodelaciones />} />
+        <Route path="/diseno" element={<DisenoArquitectonico />} />
+        <Route path="/avaluos" element={<Avaluos />} />
+        <Route path="/permisos" element={<Permisos />} />
+        <Route path="/asesoria" element={<Asesoria />} />
         <Route path="/portafolio" element={<Portfolio />} />
         <Route path="/proyecto/:id" element={<ProjectDetail />} />
+        <Route path="/servicios/construccion" element={<Navigate to="/construccion" replace />} />
+        <Route path="/servicios/remodelaciones" element={<Navigate to="/remodelaciones" replace />} />
+        <Route path="/servicios/diseno-arquitectonico" element={<Navigate to="/diseno" replace />} />
+        <Route path="/servicios/avaluos" element={<Navigate to="/avaluos" replace />} />
+        <Route path="/servicios/permisos" element={<Navigate to="/permisos" replace />} />
+        <Route path="/servicios/asesoria" element={<Navigate to="/asesoria" replace />} />
       </Routes>
     </Router>
   )

@@ -18,32 +18,32 @@ export function Footer() {
             <h4 className="font-semibold text-lg mb-4">Servicios</h4>
             <ul className="space-y-2 text-sm text-background/80">
               <li>
-                <Link to="/servicios/construccion" className="hover:text-background transition-colors">
+                <Link to="/construccion" className="hover:text-background transition-colors">
                   Construcción
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/remodelaciones" className="hover:text-background transition-colors">
+                <Link to="/remodelaciones" className="hover:text-background transition-colors">
                   Remodelaciones
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/diseno-arquitectonico" className="hover:text-background transition-colors">
+                <Link to="/diseno" className="hover:text-background transition-colors">
                   Diseño Arquitectónico
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/avaluos" className="hover:text-background transition-colors">
+                <Link to="/avaluos" className="hover:text-background transition-colors">
                   Avalúos
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/permisos" className="hover:text-background transition-colors">
+                <Link to="/permisos" className="hover:text-background transition-colors">
                   Permisos
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/asesoria" className="hover:text-background transition-colors">
+                <Link to="/asesoria" className="hover:text-background transition-colors">
                   Asesoría
                 </Link>
               </li>

@@ -15,7 +15,7 @@ export const SERVICES = [
     title: "Construcción",
     description:
       "Proyectos de construcción desde cero con los más altos estándares de calidad y acabados premium.",
-    link: "/servicios/construccion",
+    link: "/construccion",
   },
   {
     id: "remodelaciones",
@@ -23,7 +23,7 @@ export const SERVICES = [
     title: "Remodelaciones",
     description:
       "Transformamos espacios existentes en ambientes modernos y funcionales adaptados a tus necesidades.",
-    link: "/servicios/remodelaciones",
+    link: "/remodelaciones",
   },
   {
     id: "diseno",
@@ -31,14 +31,14 @@ export const SERVICES = [
     title: "Diseño Arquitectónico",
     description:
       "Diseños personalizados que combinan estética, funcionalidad y optimización de espacios.",
-    link: "/servicios/diseno-arquitectonico",
+    link: "/diseno",
   },
   {
     id: "avaluos",
     icon: "FileText",
     title: "Avalúos",
     description: "Avalúos técnicos profesionales para propiedades residenciales y comerciales.",
-    link: "/servicios/avaluos",
+    link: "/avaluos",
   },
   {
     id: "permisos",
@@ -46,7 +46,7 @@ export const SERVICES = [
     title: "Permisos",
     description:
       "Gestión completa de permisos y licencias de construcción ante las autoridades competentes.",
-    link: "/servicios/permisos",
+    link: "/permisos",
   },
   {
     id: "asesoria",
@@ -54,7 +54,7 @@ export const SERVICES = [
     title: "Asesoría",
     description:
       "Consultoría especializada para optimizar tu proyecto desde la planificación hasta la ejecución.",
-    link: "/servicios/asesoria",
+    link: "/asesoria",
   },
 ];
 

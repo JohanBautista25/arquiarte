@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
+﻿import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, MapPin, Calendar, Ruler, Eye, Filter } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { usePageTitle } from "@/hooks/usePageTitle"
 
@@ -12,54 +12,54 @@ const projects = [
     id: 1,
     title: "Casa Moderna Campestre Los Arrayanes",
     category: "Residencial",
-    type: "Construcción",
-    location: "Ibagué, Tolima",
-    area: "280 m²",
+    type: "Construcci├│n",
+    location: "Ibagu├®, Tolima",
+    area: "280 m┬▓",
     year: "2023",
     duration: "10 meses",
     budget: "$450.000.000",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
-    description: "Moderna casa campestre con acabados de lujo y diseño contemporáneo",
-    features: ["4 habitaciones", "3 baños", "Piscina", "Zona BBQ", "Doble garaje"],
+    description: "Moderna casa campestre con acabados de lujo y dise├▒o contempor├íneo",
+    features: ["4 habitaciones", "3 ba├▒os", "Piscina", "Zona BBQ", "Doble garaje"],
     status: "Completado"
   },
   {
     id: 2,
-    title: "Remodelación Apartamento Centro",
+    title: "Remodelaci├│n Apartamento Centro",
     category: "Residencial", 
-    type: "Remodelación",
-    location: "Centro, Ibagué",
-    area: "95 m²",
+    type: "Remodelaci├│n",
+    location: "Centro, Ibagu├®",
+    area: "95 m┬▓",
     year: "2023",
     duration: "3 meses",
     budget: "$85.000.000",
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
-    description: "Transformación completa de apartamento tradicional a moderno",
-    features: ["Cocina integral", "Pisos de lujo", "Iluminación LED", "Closets personalizados"],
+    description: "Transformaci├│n completa de apartamento tradicional a moderno",
+    features: ["Cocina integral", "Pisos de lujo", "Iluminaci├│n LED", "Closets personalizados"],
     status: "Completado"
   },
   {
     id: 3,
     title: "Edificio Residencial Vista Bella",
     category: "Residencial",
-    type: "Construcción", 
-    location: "Ambalá, Tolima",
-    area: "1,200 m²",
+    type: "Construcci├│n", 
+    location: "Ambal├í, Tolima",
+    area: "1,200 m┬▓",
     year: "2022",
     duration: "18 meses",
     budget: "$1.200.000.000",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
     description: "Edificio residencial de 6 pisos con 12 apartamentos modernos",
-    features: ["12 apartamentos", "Ascensor", "Portería", "Parqueaderos", "Zonas comunes"],
+    features: ["12 apartamentos", "Ascensor", "Porter├¡a", "Parqueaderos", "Zonas comunes"],
     status: "Completado"
   },
   {
     id: 4,
     title: "Centro Comercial Plaza Norte",
     category: "Comercial",
-    type: "Construcción",
-    location: "Norte, Ibagué", 
-    area: "800 m²",
+    type: "Construcci├│n",
+    location: "Norte, Ibagu├®", 
+    area: "800 m┬▓",
     year: "2023",
     duration: "12 meses",
     budget: "$950.000.000",
@@ -72,59 +72,59 @@ const projects = [
     id: 5,
     title: "Casa Familiar Conjunto Reservado",
     category: "Residencial",
-    type: "Construcción",
-    location: "Sur, Ibagué",
-    area: "180 m²", 
+    type: "Construcci├│n",
+    location: "Sur, Ibagu├®",
+    area: "180 m┬▓", 
     year: "2023",
     duration: "8 meses",
     budget: "$320.000.000",
     image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800",
-    description: "Casa de dos pisos con diseño tradicional y acabados modernos",
-    features: ["3 habitaciones", "2 baños", "Estudio", "Jardín", "Garaje"],
+    description: "Casa de dos pisos con dise├▒o tradicional y acabados modernos",
+    features: ["3 habitaciones", "2 ba├▒os", "Estudio", "Jard├¡n", "Garaje"],
     status: "Completado"
   },
   {
     id: 6,
     title: "Oficinas Corporativas TechHub",
     category: "Comercial",
-    type: "Remodelación",
-    location: "Centro, Ibagué",
-    area: "450 m²",
+    type: "Remodelaci├│n",
+    location: "Centro, Ibagu├®",
+    area: "450 m┬▓",
     year: "2023",
     duration: "4 meses", 
     budget: "$180.000.000",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
-    description: "Remodelación integral de oficinas con espacios colaborativos",
-    features: ["Espacios abiertos", "Salas de juntas", "Cafetería", "Tecnología integrada"],
+    description: "Remodelaci├│n integral de oficinas con espacios colaborativos",
+    features: ["Espacios abiertos", "Salas de juntas", "Cafeter├¡a", "Tecnolog├¡a integrada"],
     status: "Completado"
   },
   {
     id: 7,
     title: "Villa Campestre El Bosque",
     category: "Residencial", 
-    type: "Construcción",
+    type: "Construcci├│n",
     location: "Cajamarca, Tolima",
-    area: "350 m²",
+    area: "350 m┬▓",
     year: "2022",
     duration: "14 meses",
     budget: "$680.000.000",
     image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800",
-    description: "Villa de lujo con vista panorámica y diseño arquitectónico único",
-    features: ["5 habitaciones", "4 baños", "Piscina infinita", "Spa", "Caballerizas"],
+    description: "Villa de lujo con vista panor├ímica y dise├▒o arquitect├│nico ├║nico",
+    features: ["5 habitaciones", "4 ba├▒os", "Piscina infinita", "Spa", "Caballerizas"],
     status: "Completado"
   },
   {
     id: 8,
     title: "Restaurante Gourmet La Terraza",
     category: "Comercial",
-    type: "Remodelación",
-    location: "Zona Rosa, Ibagué",
-    area: "220 m²",
+    type: "Remodelaci├│n",
+    location: "Zona Rosa, Ibagu├®",
+    area: "220 m┬▓",
     year: "2023",
     duration: "2 meses",
     budget: "$120.000.000",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800",
-    description: "Transformación completa de local en restaurante de alta cocina",
+    description: "Transformaci├│n completa de local en restaurante de alta cocina",
     features: ["Cocina profesional", "Terraza", "Bar", "Aire acondicionado", "Sonido"],
     status: "Completado"
   },
@@ -132,24 +132,26 @@ const projects = [
     id: 9,
     title: "Conjunto Residencial Las Palmas",
     category: "Residencial",
-    type: "Construcción",
-    location: "Picaleña, Ibagué",
-    area: "2,800 m²",
+    type: "Construcci├│n",
+    location: "Picale├▒a, Ibagu├®",
+    area: "2,800 m┬▓",
     year: "2024",
     duration: "24 meses",
     budget: "$2.100.000.000", 
     image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800",
     description: "Conjunto cerrado con 24 casas y completas zonas comunes",
     features: ["24 casas", "Piscina", "Gimnasio", "Parque infantil", "Seguridad"],
-    status: "En construcción"
+    status: "En construcci├│n"
   }
 ]
 
 const categories = ["Todos", "Residencial", "Comercial"]
-const types = ["Todos", "Construcción", "Remodelación", "Diseño"]
+const types = ["Todos", "Construcci├│n", "Remodelaci├│n", "Dise├▒o"]
 
 export default function Portfolio() {
   usePageTitle('Portfolio')
+  const navigate = useNavigate()
+
   
   const [selectedCategory, setSelectedCategory] = useState("Todos")
   const [selectedType, setSelectedType] = useState("Todos")
@@ -189,7 +191,7 @@ export default function Portfolio() {
                 Nuestro Portfolio
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Más de 50 proyectos completados exitosamente en Ibagué y el Tolima. 
+                M├ís de 50 proyectos completados exitosamente en Ibagu├® y el Tolima. 
                 Cada proyecto refleja nuestro compromiso con la calidad y la excelencia.
               </p>
             </div>
@@ -206,11 +208,11 @@ export default function Portfolio() {
               </div>
               <div>
                 <div className="text-4xl font-bold text-primary mb-2">10+</div>
-                <div className="text-muted-foreground">Años de experiencia</div>
+                <div className="text-muted-foreground">A├▒os de experiencia</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-primary mb-2">15,000m²</div>
-                <div className="text-muted-foreground">Área construida</div>
+                <div className="text-4xl font-bold text-primary mb-2">15,000m┬▓</div>
+                <div className="text-muted-foreground">├ürea construida</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-primary mb-2">100%</div>
@@ -286,10 +288,10 @@ export default function Portfolio() {
                         {project.type}
                       </span>
                     </div>
-                    {project.status === "En construcción" && (
+                    {project.status === "En construcci├│n" && (
                       <div className="absolute top-4 right-4">
                         <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-medium rounded">
-                          En construcción
+                          En construcci├│n
                         </span>
                       </div>
                     )}
@@ -343,17 +345,17 @@ export default function Portfolio() {
         <section className="py-20 px-4 bg-primary text-primary-foreground">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para ser nuestro próximo proyecto exitoso?
+              ┬┐Listo para ser nuestro pr├│ximo proyecto exitoso?
             </h2>
             <p className="text-lg mb-8 opacity-90">
-              Únete a nuestros clientes satisfechos y haz realidad tu proyecto de construcción
+              ├Ünete a nuestros clientes satisfechos y haz realidad tu proyecto de construcci├│n
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/#contacto"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition-colors"
               >
-                Solicitar cotización
+                Solicitar cotizaci├│n
               </Link>
               <a 
                 href="tel:+573002513950"

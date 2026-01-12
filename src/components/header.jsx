@@ -2,14 +2,14 @@
 
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { NAV_ITEMS, BRAND } from "@/constants"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   const isHomePage = location.pathname === '/'
-  const activeHash = isHomePage ? location.hash : ''
 
   const getNavHref = (item) => {
     if (item.hashId) {
@@ -19,9 +19,21 @@ export function Header() {
   }
 
   const shouldUseAnchor = (item) => item.hashId
+  const handleHashNav = (event, item) => {
+    event.preventDefault()
+    if (isHomePage) {
+      const element = document.getElementById(item.hashId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      return
+    }
+    sessionStorage.setItem('scrollTarget', `#${item.hashId}`)
+    navigate('/')
+  }
   const isItemActive = (item) => {
     if (item.hashId) {
-      return isHomePage && activeHash === `#${item.hashId}`
+      return isHomePage
     }
     return location.pathname === item.path
   }
@@ -46,6 +58,7 @@ export function Header() {
                       isItemActive(item) ? "text-primary" : ""
                     }`}
                     aria-current={isItemActive(item) ? "page" : undefined}
+                    onClick={(event) => handleHashNav(event, item)}
                   >
                     {item.label}
                   </a>
@@ -86,7 +99,10 @@ export function Header() {
                       isItemActive(item) ? "text-primary" : ""
                     }`}
                     aria-current={isItemActive(item) ? "page" : undefined}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(event) => {
+                      handleHashNav(event, item)
+                      setMobileMenuOpen(false)
+                    }}
                   >
                     {item.label}
                   </a>

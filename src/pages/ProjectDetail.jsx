@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
+﻿import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, MapPin, Calendar, Ruler, Clock, DollarSign, CheckCircle2, Users, Phone, Mail, ArrowRight } from "lucide-react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { usePageTitle } from "@/hooks/usePageTitle"
 
 // Mock data - en una aplicación real esto vendría de una API

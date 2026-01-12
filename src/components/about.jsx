@@ -3,6 +3,13 @@ import { Link } from "react-router-dom"
 import { ABOUT_FEATURES, BRAND } from "@/constants"
 
 export function About() {
+  const handleContactClick = () => {
+    const element = document.getElementById('contacto')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section id="nosotros" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
       <div className="max-w-7xl mx-auto">
@@ -31,12 +38,13 @@ export function About() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="#contacto"
+              <button
+                type="button"
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-center"
+                onClick={handleContactClick}
               >
-                Solicitar Cotización
-              </a>
+                Solicitar Cotizacion
+              </button>
               <Link 
                 to="/portafolio"
                 className="px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-colors text-center"
