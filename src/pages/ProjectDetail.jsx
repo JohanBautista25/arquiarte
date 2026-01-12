@@ -462,6 +462,12 @@ const projectsData = {
 
 export default function ProjectDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
+  const handleContactNav = (event) => {
+    event.preventDefault()
+    sessionStorage.setItem('scrollTarget', '#contacto')
+    navigate('/')
+  }
   const project = projectsData[id]
 
   usePageTitle(project ? project.title : 'Proyecto')
@@ -713,8 +719,9 @@ export default function ProjectDetail() {
                 Llamar ahora
               </a>
               <Link 
-                to="/#contacto"
+                to="/"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 rounded-lg font-medium hover:bg-white/10 transition-colors"
+                onClick={handleContactNav}
               >
                 <Mail className="w-4 h-4" />
                 Solicitar cotización
