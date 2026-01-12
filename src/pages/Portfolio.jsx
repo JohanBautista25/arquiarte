@@ -155,6 +155,11 @@ export default function Portfolio() {
   
   const [selectedCategory, setSelectedCategory] = useState("Todos")
   const [selectedType, setSelectedType] = useState("Todos")
+  const handleContactNav = (event) => {
+    event.preventDefault()
+    sessionStorage.setItem('scrollTarget', '#contacto')
+    navigate('/')
+  }
 
   const filteredProjects = projects.filter(project => {
     const categoryMatch = selectedCategory === "Todos" || project.category === selectedCategory
@@ -352,8 +357,9 @@ export default function Portfolio() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                to="/#contacto"
+                to="/"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                onClick={handleContactNav}
               >
                 Solicitar cotizaci├│n
               </Link>
